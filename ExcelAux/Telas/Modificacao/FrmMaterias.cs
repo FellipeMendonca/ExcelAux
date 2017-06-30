@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ExcelAux.Telas.Modificacao
 {
-    public partial class Modificacao : Form
+    public partial class FrmMaterias : Form
     {
-        public Modificacao()
+        public FrmMaterias()
         {
             InitializeComponent();
         }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExcelAux
+namespace ExcelAux.Telas.Modificacao
 {
-    public partial class TelaPrincipal : Form
+    public partial class FrmTarefas : Form
     {
-        public TelaPrincipal()
+        public FrmTarefas()
         {
             InitializeComponent();
         }

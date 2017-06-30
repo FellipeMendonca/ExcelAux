@@ -34,7 +34,7 @@ namespace ExcelAux.Manipulador
         }
 
 
-        private static List<Materias> GetPlanilhaMaterias(string caminhoExcel, string nomePlanilha)
+        public static List<Materias> GetPlanilhaMaterias(string caminhoExcel, string nomePlanilha)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace ExcelAux.Manipulador
             return null;
         }
 
-        private static List<Tarefas> GetPlanilhaTarefas(string caminhoExcel, string nomePlanilha)
+        public static List<Tarefas> GetPlanilhaTarefas(string caminhoExcel, string nomePlanilha)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace ExcelAux.Manipulador
                     {
                         Id = planilha.Cell("A" + linha.ToString()).Value.ToString(),
                         Nome = planilha.Cell("B" + linha.ToString()).Value.ToString(),
-                        Descricao = planilha.Cell("C" + linha.ToString()).Value.ToString(),                        
+                        Descricao = planilha.Cell("C" + linha.ToString()).Value.ToString(),
                         Prioridade = planilha.Cell("D" + linha.ToString()).Value.ToString(),
                         DataInicio = planilha.Cell("E" + linha.ToString()).Value.ToString(),
                         DataFim = planilha.Cell("F" + linha.ToString()).Value.ToString(),

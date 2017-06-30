@@ -52,17 +52,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassesObjetos\Tarefas.cs" />
-    <Compile Include="Telas\Modificacao\Modificacao.cs">
+    <Compile Include="Telas\Modificacao\FrmMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Modificacao\Modificacao.Designer.cs">
-      <DependentUpon>Modificacao.cs</DependentUpon>
+    <Compile Include="Telas\Modificacao\FrmMaterias.Designer.cs">
+      <DependentUpon>FrmMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Principal\TelaPrincipal.cs">
+    <Compile Include="Telas\Modificacao\FrmTarefas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Principal\TelaPrincipal.Designer.cs">
-      <DependentUpon>TelaPrincipal.cs</DependentUpon>
+    <Compile Include="Telas\Modificacao\FrmTarefas.Designer.cs">
+      <DependentUpon>FrmTarefas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Principal\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Principal\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Manipulador\Manipular.cs" />
     <Compile Include="ClassesObjetos\Materias.cs" />
@@ -77,6 +83,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
