@@ -105,9 +105,9 @@
             // txbConteudo
             // 
             this.txbConteudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbConteudo.Location = new System.Drawing.Point(99, 73);
+            this.txbConteudo.Location = new System.Drawing.Point(109, 73);
             this.txbConteudo.Name = "txbConteudo";
-            this.txbConteudo.Size = new System.Drawing.Size(199, 24);
+            this.txbConteudo.Size = new System.Drawing.Size(189, 24);
             this.txbConteudo.TabIndex = 7;
             // 
             // lblConteudo
@@ -116,9 +116,9 @@
             this.lblConteudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConteudo.Location = new System.Drawing.Point(12, 76);
             this.lblConteudo.Name = "lblConteudo";
-            this.lblConteudo.Size = new System.Drawing.Size(81, 18);
+            this.lblConteudo.Size = new System.Drawing.Size(91, 18);
             this.lblConteudo.TabIndex = 6;
-            this.lblConteudo.Text = "Conteudo";
+            this.lblConteudo.Text = "Conteudo: ";
             // 
             // lblPrioridade
             // 
@@ -186,7 +186,7 @@
             this.tbnSalvar.UseVisualStyleBackColor = true;
             this.tbnSalvar.Click += new System.EventHandler(this.tbnSalvar_Click);
             // 
-            // cbxPropriedade
+            // cbxPrioridade
             // 
             this.cbxPrioridade.FormattingEnabled = true;
             this.cbxPrioridade.Items.AddRange(new object[] {
@@ -194,7 +194,7 @@
             "Média",
             "Baixa"});
             this.cbxPrioridade.Location = new System.Drawing.Point(405, 77);
-            this.cbxPrioridade.Name = "cbxPropriedade";
+            this.cbxPrioridade.Name = "cbxPrioridade";
             this.cbxPrioridade.Size = new System.Drawing.Size(92, 21);
             this.cbxPrioridade.TabIndex = 17;
             // 

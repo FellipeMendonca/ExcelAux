@@ -135,12 +135,96 @@ namespace ExcelAux.Manipulador
                         planilha.Cell("F" + linha.ToString()).Value = materia.DataInicio;
                         planilha.Cell("G" + linha.ToString()).Value = materia.DataFim;
                         planilha.Cell("H" + linha.ToString()).Value = materia.Finalizado;
-                        Console.WriteLine(planilha.Cell("H" + linha.ToString()).Value.ToString());
                         break;
                     }
                     linha++;
                 }
-                
+
+                excel.SaveAs(caminhoExcel);
+                excel.Dispose();
+            }
+            catch (Exception ex)
+
+            {
+                MessageBox.Show("Tipo de Erro: " + ex.Message, "Erro", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public static void AlterarTarefas(Tarefas tarefa)
+        {
+            try
+            {
+                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
+
+                int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
+                while (true)
+                {
+                    if (planilha.Cell("A" + linha.ToString()).Value.ToString().Equals(tarefa.Id))
+                    {
+                        planilha.Cell("B" + linha.ToString()).Value = tarefa.Nome;
+                        planilha.Cell("C" + linha.ToString()).Value = tarefa.Descricao;
+                        planilha.Cell("D" + linha.ToString()).Value = tarefa.Prioridade;
+                        planilha.Cell("E" + linha.ToString()).Value = tarefa.DataInicio;
+                        planilha.Cell("F" + linha.ToString()).Value = tarefa.DataFim;
+                        planilha.Cell("G" + linha.ToString()).Value = tarefa.Finalizado;
+                        break;
+                    }
+                    linha++;
+                }
+
+                excel.SaveAs(caminhoExcel);
+                excel.Dispose();
+            }
+            catch (Exception ex)
+
+            {
+                MessageBox.Show("Tipo de Erro: " + ex.Message, "Erro", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public static void IncluirMateria(Materias materia)
+        {
+            try
+            {
+                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
+                string linha = Convert.ToInt32(materia.Id + 1).ToString();// Ignorar primeira linha
+                planilha.Cell("A" + linha).Value = materia.Id;
+                planilha.Cell("B" + linha).Value = materia.Local;
+                planilha.Cell("C" + linha).Value = materia.Materia;
+                planilha.Cell("D" + linha).Value = materia.Conteudo;
+                planilha.Cell("E" + linha).Value = materia.Prioridade;
+                planilha.Cell("F" + linha).Value = materia.DataInicio;
+                planilha.Cell("G" + linha).Value = materia.DataFim;
+                planilha.Cell("H" + linha).Value = materia.Finalizado;
+                excel.SaveAs(caminhoExcel);
+                excel.Dispose();
+            }
+            catch (Exception ex)
+
+            {
+                MessageBox.Show("Tipo de Erro: " + ex.Message, "Erro", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public static void IncluirTarefas(Tarefas tarefa)
+        {
+            try
+            {
+                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
+                string linha = Convert.ToInt32(tarefa.Id + 1).ToString();// Ignorar primeira linha
+                planilha.Cell("A" + linha).Value = tarefa.Id;
+                planilha.Cell("B" + linha).Value = tarefa.Nome;
+                planilha.Cell("C" + linha).Value = tarefa.Descricao;
+                planilha.Cell("D" + linha).Value = tarefa.Prioridade;
+                planilha.Cell("E" + linha).Value = tarefa.DataInicio;
+                planilha.Cell("F" + linha).Value = tarefa.DataFim;
+                planilha.Cell("G" + linha).Value = tarefa.Finalizado;
                 excel.SaveAs(caminhoExcel);
                 excel.Dispose();
             }

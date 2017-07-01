@@ -86,6 +86,9 @@
     <EmbeddedResource Include="Telas\Modificacao\FrmMaterias.resx">
       <DependentUpon>FrmMaterias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Modificacao\FrmTarefas.resx">
+      <DependentUpon>FrmTarefas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
