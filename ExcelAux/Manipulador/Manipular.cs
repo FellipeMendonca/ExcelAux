@@ -12,7 +12,8 @@ namespace ExcelAux.Manipulador
 {
     public class Manipular
     {
-        public static List<string> GetNomePlanilhas(string caminhoExcel)
+        static string caminhoExcel = @"C:\Users\Fellipe Mendonça\OneDrive\Documentos\Estudos OC\Guia de Estudos.xlsx";
+        public static List<string> GetNomePlanilhas()
         {
             try
             {
@@ -34,12 +35,12 @@ namespace ExcelAux.Manipulador
         }
 
 
-        public static List<Materias> GetPlanilhaMaterias(string caminhoExcel, string nomePlanilha)
+        public static List<Materias> GetPlanilhaMaterias()
         {
             try
             {
                 ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
-                var planilha = excel.Worksheet(nomePlanilha); // Possivel Selected no ComboBox
+                var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
                 List<Materias> listaMateria = new List<Materias>();
 
                 int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
@@ -75,12 +76,12 @@ namespace ExcelAux.Manipulador
             return null;
         }
 
-        public static List<Tarefas> GetPlanilhaTarefas(string caminhoExcel, string nomePlanilha)
+        public static List<Tarefas> GetPlanilhaTarefas()
         {
             try
             {
                 XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
-                var planilha = excel.Worksheet(nomePlanilha); // Possivel Selected no ComboBox
+                var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
                 List<Tarefas> listaTarefa = new List<Tarefas>();
 
                 int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
@@ -113,6 +114,42 @@ namespace ExcelAux.Manipulador
 
             }
             return null;
+        }
+
+        public static void AlterarMateria(Materias materia)
+        {
+            try
+            {
+                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
+
+                int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
+                while (true)
+                {
+                    if (planilha.Cell("A" + linha.ToString()).Value.ToString().Equals(materia.Id))
+                    {
+                        planilha.Cell("B" + linha.ToString()).Value = materia.Local;
+                        planilha.Cell("C" + linha.ToString()).Value = materia.Materia;
+                        planilha.Cell("D" + linha.ToString()).Value = materia.Conteudo;
+                        planilha.Cell("E" + linha.ToString()).Value = materia.Prioridade;
+                        planilha.Cell("F" + linha.ToString()).Value = materia.DataInicio;
+                        planilha.Cell("G" + linha.ToString()).Value = materia.DataFim;
+                        planilha.Cell("H" + linha.ToString()).Value = materia.Finalizado;
+                        Console.WriteLine(planilha.Cell("H" + linha.ToString()).Value.ToString());
+                        break;
+                    }
+                    linha++;
+                }
+                
+                excel.SaveAs(caminhoExcel);
+                excel.Dispose();
+            }
+            catch (Exception ex)
+
+            {
+                MessageBox.Show("Tipo de Erro: " + ex.Message, "Erro", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

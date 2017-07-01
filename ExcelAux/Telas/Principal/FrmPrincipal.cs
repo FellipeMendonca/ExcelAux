@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ExcelAux.Telas.Modificacao;
+using ExcelAux.ClassesObjetos;
 
 namespace ExcelAux.Telas
 {
     public partial class FrmPrincipal : Form
     {
-        private string caminhoExcel = @"C:\Users\Fellipe Mendonça\OneDrive\Documentos\Estudos OC\Guia de Estudos.xlsx";
+        
         public FrmPrincipal()
         {
             InitializeComponent();
-            cbxPlanilhas.DataSource = Manipulador.Manipular.GetNomePlanilhas(caminhoExcel);
+            cbxPlanilhas.DataSource = Manipulador.Manipular.GetNomePlanilhas();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -29,9 +30,9 @@ namespace ExcelAux.Telas
         private void PreencherDGV(string planilha)
         {
             if (planilha.Equals("Tarefas"))
-                dgvExcel.DataSource = Manipulador.Manipular.GetPlanilhaTarefas(caminhoExcel, planilha);
+                dgvExcel.DataSource = Manipulador.Manipular.GetPlanilhaTarefas();
             else
-                dgvExcel.DataSource = Manipulador.Manipular.GetPlanilhaMaterias(caminhoExcel, planilha);
+                dgvExcel.DataSource = Manipulador.Manipular.GetPlanilhaMaterias();
             dgvExcel.Update();
             dgvExcel.Refresh(); dgvExcel.Refresh();
         }
@@ -40,7 +41,16 @@ namespace ExcelAux.Telas
         {
             if (cbxPlanilhas.Text.Equals("Materias de Estudos"))
             {
-                Modificacao.FrmMaterias frmMaterias = new Modificacao.FrmMaterias();
+                Materias materia = new Materias();
+                materia.Id = dgvExcel.CurrentRow.Cells["Id"].Value.ToString();
+                materia.Local = dgvExcel.CurrentRow.Cells["Local"].Value.ToString();
+                materia.Materia = dgvExcel.CurrentRow.Cells["Materia"].Value.ToString();
+                materia.Conteudo = dgvExcel.CurrentRow.Cells["Conteudo"].Value.ToString();
+                materia.Prioridade = dgvExcel.CurrentRow.Cells["Prioridade"].Value.ToString();
+                materia.DataInicio = dgvExcel.CurrentRow.Cells["DataInicio"].Value.ToString();
+                materia.DataFim = dgvExcel.CurrentRow.Cells["DataFim"].Value.ToString();
+                materia.Finalizado = dgvExcel.CurrentRow.Cells["Finalizado"].Value.ToString();
+                Modificacao.FrmMaterias frmMaterias = new Modificacao.FrmMaterias(materia);
                 frmMaterias.ShowDialog();
             }
             else
@@ -48,7 +58,7 @@ namespace ExcelAux.Telas
                 Modificacao.FrmTarefas frmTarefas = new Modificacao.FrmTarefas();
                 frmTarefas.ShowDialog();
             }
-
+            PreencherDGV(cbxPlanilhas.Text);
         }
     }
 }
