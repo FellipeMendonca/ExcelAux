@@ -12,12 +12,18 @@ namespace ExcelAux.Manipulador
 {
     public class Manipular
     {
-        static string caminhoExcel = @"C:\Users\Fellipe Mendonça\OneDrive\Documentos\Estudos OC\Guia de Estudos.xlsx";
+        private static XLWorkbook AbrirExcel()
+        {
+            string caminhoExcel = @"C:\Users\Fellipe Mendonça\OneDrive\Documentos\Estudos OC\Guia de Estudos.xlsx";
+            XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+            return excel;
+        }
+
         public static List<string> GetNomePlanilhas()
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 List<string> nomePlanilhas = new List<string>();
                 int qtdPlanilhas = excel.Worksheets.Count; // Obter a quantidade de Planilhas
                 for (int i = 1; i <= qtdPlanilhas; i++)
@@ -39,7 +45,7 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
                 List<Materias> listaMateria = new List<Materias>();
 
@@ -80,7 +86,7 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
                 List<Tarefas> listaTarefa = new List<Tarefas>();
 
@@ -120,7 +126,7 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
 
                 int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
@@ -140,7 +146,7 @@ namespace ExcelAux.Manipulador
                     linha++;
                 }
 
-                excel.SaveAs(caminhoExcel);
+                excel.Save();
                 excel.Dispose();
             }
             catch (Exception ex)
@@ -155,7 +161,7 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
 
                 int linha = 2;//Começa a leitura pela linha 2 para ignorar cabeçalho
@@ -174,7 +180,7 @@ namespace ExcelAux.Manipulador
                     linha++;
                 }
 
-                excel.SaveAs(caminhoExcel);
+                excel.Save();
                 excel.Dispose();
             }
             catch (Exception ex)
@@ -189,9 +195,9 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Materias de Estudos"); // Possivel Selected no ComboBox
-                string linha = Convert.ToInt32(materia.Id + 1).ToString();// Ignorar primeira linha
+                string linha = (Convert.ToInt32(materia.Id) + 1).ToString();
                 planilha.Cell("A" + linha).Value = materia.Id;
                 planilha.Cell("B" + linha).Value = materia.Local;
                 planilha.Cell("C" + linha).Value = materia.Materia;
@@ -200,7 +206,7 @@ namespace ExcelAux.Manipulador
                 planilha.Cell("F" + linha).Value = materia.DataInicio;
                 planilha.Cell("G" + linha).Value = materia.DataFim;
                 planilha.Cell("H" + linha).Value = materia.Finalizado;
-                excel.SaveAs(caminhoExcel);
+                excel.Save();
                 excel.Dispose();
             }
             catch (Exception ex)
@@ -215,9 +221,9 @@ namespace ExcelAux.Manipulador
         {
             try
             {
-                ClosedXML.Excel.XLWorkbook excel = new XLWorkbook(caminhoExcel); // Abrir Excel
+                XLWorkbook excel = AbrirExcel();
                 var planilha = excel.Worksheet("Tarefas"); // Possivel Selected no ComboBox
-                string linha = Convert.ToInt32(tarefa.Id + 1).ToString();// Ignorar primeira linha
+                string linha = (Convert.ToInt32(tarefa.Id) + 1).ToString();// Ignorar primeira linha
                 planilha.Cell("A" + linha).Value = tarefa.Id;
                 planilha.Cell("B" + linha).Value = tarefa.Nome;
                 planilha.Cell("C" + linha).Value = tarefa.Descricao;
@@ -225,7 +231,7 @@ namespace ExcelAux.Manipulador
                 planilha.Cell("E" + linha).Value = tarefa.DataInicio;
                 planilha.Cell("F" + linha).Value = tarefa.DataFim;
                 planilha.Cell("G" + linha).Value = tarefa.Finalizado;
-                excel.SaveAs(caminhoExcel);
+                excel.Save();
                 excel.Dispose();
             }
             catch (Exception ex)

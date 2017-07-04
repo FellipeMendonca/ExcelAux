@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ExcelAux.Telas.Modificacao;
@@ -34,7 +27,7 @@ namespace ExcelAux.Telas
             else
                 dgvExcel.DataSource = Manipulador.Manipular.GetPlanilhaMaterias();
             dgvExcel.Update();
-            dgvExcel.Refresh(); dgvExcel.Refresh();
+            dgvExcel.Refresh();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -80,14 +73,15 @@ namespace ExcelAux.Telas
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
+            int id = dgvExcel.Rows.Count + 1;
             if (cbxPlanilhas.Text.Equals("Materias de Estudos"))
             {
-                FrmMaterias frmMaterias= new FrmMaterias((dgvExcel.Rows.Count + 1).ToString());
+                FrmMaterias frmMaterias = new FrmMaterias(id.ToString());
                 frmMaterias.ShowDialog();
             }
             else
             {
-                FrmTarefas frmTarefas = new FrmTarefas((dgvExcel.Rows.Count + 1).ToString());
+                FrmTarefas frmTarefas = new FrmTarefas(id.ToString());
                 frmTarefas.ShowDialog();
             }
             PreencherDGV(cbxPlanilhas.Text);

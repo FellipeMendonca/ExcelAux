@@ -72,7 +72,7 @@
             this.dgvExcel.AllowUserToOrderColumns = true;
             this.dgvExcel.AllowUserToResizeColumns = false;
             this.dgvExcel.AllowUserToResizeRows = false;
-            this.dgvExcel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvExcel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvExcel.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvExcel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
